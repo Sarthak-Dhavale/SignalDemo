@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, OnInit, signal } from '@angular/core';
 import { ReactiveFormsModule,FormControl, FormGroup } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-search-component',
@@ -25,7 +26,7 @@ export class SearchComponentComponent implements OnInit {
 
   ngOnInit(){
 
-    this.searchForm.get('search')?.valueChanges.subscribe(value => {
+    this.searchForm.get('search')?.valueChanges.pipe(debounceTime(300)).subscribe(value => {
       this.searchTerm.set(value ?? '');
     })
   }
