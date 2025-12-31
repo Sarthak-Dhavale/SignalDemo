@@ -1,0 +1,11 @@
+<div class="main">
+    <form [formGroup]="searchForm">
+        <input type="text" placeholder="Search..." formControlName="search" />
+    </form>
+
+    <ul>
+        @for(city of filteredCities(); track city){
+            <li>{{city}}</li>
+        }
+    </ul>
+</div>
