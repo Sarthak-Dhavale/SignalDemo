@@ -1,4 +1,4 @@
-<div class="main">
+<div [ngClass]="isToggled() ? 'new-main' : 'main'">
     <form [formGroup]="searchForm">
         <input type="text" placeholder="Search..." formControlName="search" />
     </form>
@@ -8,4 +8,8 @@
             <li>{{city}}</li>
         }
     </ul>
+</div>
+
+<div class="btn-container">
+    <button (click)="onToggle()">Toggle Color</button>
 </div>

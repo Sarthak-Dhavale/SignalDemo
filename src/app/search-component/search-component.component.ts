@@ -19,6 +19,7 @@ export class SearchComponentComponent implements OnInit {
     return this.cityList().filter(city => city.toLowerCase().includes(search));
 
   })
+  isToggled = signal(false);
 
   searchForm = new FormGroup({
     search: new FormControl('')
@@ -31,4 +32,7 @@ export class SearchComponentComponent implements OnInit {
     })
   }
 
+  onToggle(){
+    this.isToggled.set(!this.isToggled())
+  }
 }
