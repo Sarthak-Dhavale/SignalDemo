@@ -1,1 +1,14 @@
-<p>signal-form works!</p>
+<div class="main">
+    <input type="email" placeholder="Email" [value]="email()" (input)="email.set($any($event.target).value)" />
+
+    <p *ngIf="!isEmailValid()">Invalid email</p>
+
+    <input type="password" placeholder="Password" [value]="password()"
+        (input)="password.set($any($event.target).value)" />
+
+    <p *ngIf="!isPasswordValid()">Min 6 characters</p>
+
+    <button [disabled]="!isFormValid()" (click)="submit()">
+        Login
+    </button>
+</div>

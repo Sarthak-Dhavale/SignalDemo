@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 
 interface LoginData {
   email: string;
@@ -8,17 +8,32 @@ interface LoginData {
 @Component({
   selector: 'app-signal-form',
   standalone: true,
-  imports: [Field],
+  imports: [],
   templateUrl: './signal-form.component.html',
   styleUrl: './signal-form.component.css'
 })
 export class SignalFormComponent {
 
-  loginModel  = signal<LoginData>({
-    email: '',
-    password: ''
-  })
+  email = signal('');
+  password = signal('');
 
-  loginForm = form(this.loginModel)
+  isEmailValid = computed(() =>
+    this.email().includes('@')
+  );
+
+  isPasswordValid = computed(() =>
+    this.password().length >= 6
+  );
+
+  isFormValid = computed(() =>
+    this.isEmailValid() && this.isPasswordValid()
+  );
+
+  submit() {
+    console.log({
+      email: this.email(),
+      password: this.password()
+    });
+  }
 
 }
