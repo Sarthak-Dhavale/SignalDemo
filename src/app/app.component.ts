@@ -1,11 +1,12 @@
 import { Component, computed, Signal, WritableSignal, effect, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SearchComponentComponent } from './search-component/search-component.component';
+import { SignalFormComponent } from './Components/signal-form/signal-form.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,SearchComponentComponent],
+  imports: [RouterOutlet,SearchComponentComponent,SignalFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
